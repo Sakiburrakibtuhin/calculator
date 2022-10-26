@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="container">
+    <div class="Calculator dark" >
+        <div class="theme-toggler active">
+            <i class="toggler-icon"></i>
+        </div>
+        <div class="display-screen">
+            <input type="text" id="input">
+        </div>
+       <div class="buttons">
+        <table>
+            <tr>
+                <td><input type="button" id="clear" value="C" onclick="DeleteAll()"></td>
+                <td><input type="button" class ="oparator" value="(" onclick="Calculator('(')"></td>
+                <td><input type="button" class ="oparator" value=")" onclick="Calculator( ')')"></td>
+                <td><input type="button" class="oparator" value="/" onclick="Calculator( '/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" value="7" onclick="Calculator('7')"></td>
+                <td><input type="button" class="number" value="8" onclick="Calculator('8')"></td>
+                <td><input type="button" class="number" value="9" onclick="Calculator('9')"></td>
+                <td><input type="button" class ="oparator" value="+" onclick="Calculator('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" value="4" onclick="Calculator('4')"></td>
+                <td><input type="button" class="number" value="5" onclick="Calculator('5')"></td>
+                <td><input type="button" class="number" value="6" onclick="Calculator('6')"></td>
+                <td><input type="button" class ="oparator" value="-" onclick="Calculator('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="number" value="1" onclick="Calculator('1')"></td>
+                <td><input type="button" class="number" value="2" onclick="Calculator('2')"></td>
+                <td><input type="button" class="number" value="3" onclick="Calculator('3')"></td>
+                <td><input type="button" class="oparator" value="*" onclick="Calculator('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="oparator" value="." onclick="Calculator('.')"></td>
+                <td><input type="button" class="number" value="0" onclick="Calculator('0')"></td>
+                <td><input type="button" class="oparator" value="M" onclick="Calculator('M')"></td>
+                <td><input type="button" id="clear" value="=" onclick="Equal()"></td>
+            </tr>
+        </table>
+       </div>
+    </div>
+ </div>
+    
+    <script>
+        function DeleteAll(){
+            document.getElementById("input").value = "" ;
+        }
+        
+        function Calculator(NewValue){
+            document.getElementById("input").value += NewValue ;
+        }
+        function Equal(){
+            var a = document.getElementById("input").value ; 
+            var b = eval(a);
+            document.getElementById("input").value = b ; 
+        }
+
+
+
+        const themeToggleBtn = document.querySelector('.theme-toggler');
+        const Calculato = document.querySelector('.Calculator');
+        const toggleIcon = document.querySelector('.toggler-icon');
+        let isDark = true;
+        themeToggleBtn.onclick = () =>{
+            Calculato.classList.toggle('dark');
+            themeToggleBtn.classList.toggle('active')
+            isDark = !isDark;
+        }
+     </script>
+</body>
+</html>
